@@ -3,6 +3,7 @@ import { Menu } from 'antd';
 import { MailOutlined, UserOutlined, SettingOutlined, DribbbleOutlined, AuditOutlined,VideoCameraAddOutlined, HomeOutlined } from '@ant-design/icons';
 import { ABOUT_ME, ILLUMINATED_MIND, MIND_AND_MATTER, REVIEW, PODCAST } from './Data';
 import 'antd/dist/antd.css';
+import SearchBar from './SearchBar';
 
 const { SubMenu } = Menu;
 
@@ -19,7 +20,9 @@ class Header extends React.Component {
   render() {
     const { current } = this.state;
     return (
-      <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal" theme="dark" >
+      <div className='header'>
+          <div className='header_menu'>
+          <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal" theme="dark" >
         <Menu.Item key="Home" icon={<HomeOutlined />}></Menu.Item>
         <SubMenu key="AboutMe" icon={<UserOutlined />} title="About Me">
         <Menu.ItemGroup>
@@ -73,7 +76,15 @@ class Header extends React.Component {
             Contact Us
           </a>
         </Menu.Item>
-      </Menu>
+        <Menu.Item>
+        <div className='header_searchBar'>
+              <SearchBar/>
+        </div>
+        </Menu.Item>
+        </Menu>
+        </div>
+      </div>
+      
     );
   }
 }
